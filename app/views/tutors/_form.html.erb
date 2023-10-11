@@ -1,0 +1,42 @@
+<%= form_with(model: tutor) do |form| %>
+  <% if tutor.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(tutor.errors.count, "error") %> prohibited this tutor from being saved:</h2>
+
+      <ul>
+        <% tutor.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :bio, style: "display: block" %>
+    <%= form.text_area :bio %>
+  </div>
+
+  <div>
+    <%= form.label :course_ids, style: "display: block" %>
+    <%= form.collection_check_boxes :course_ids,  Course.order(:prefix, :number), :id, :title do |cb| %>
+      <div class="form-check">
+        <%= cb.check_box class: 'form-check-input' %>
+        <%= cb.label class: 'form-check-lable' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
