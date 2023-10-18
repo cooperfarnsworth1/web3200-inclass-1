@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_11_171746) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_18_170759) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -49,6 +49,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_171746) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "availabilities", force: :cascade do |t|
+    t.integer "tutor_id", null: false
+    t.integer "day"
+    t.time "starts_at"
+    t.time "ends_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tutor_id"], name: "index_availabilities_on_tutor_id"
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "prefix"
     t.integer "num"
@@ -73,4 +83,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_171746) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "availabilities", "tutors"
 end

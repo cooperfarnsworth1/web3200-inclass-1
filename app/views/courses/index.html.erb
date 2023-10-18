@@ -8,6 +8,7 @@
       <th>Prefix</th>
       <th>Number</th>
       <th>Title</th>
+      <th>Assigned Tutors</th>
       <th></th>
     </thead>
     <tbody>
@@ -16,6 +17,7 @@
         <td><%= course.prefix %></td>
         <td><%= course.num %></td>
         <td><%= course.title %></td>
+        <td><%= course.tutors.map {|t| t.name } %></td>
         <td><%= link_to "See more", course_path(course) %></td>
       </tr>
     <% end %>
