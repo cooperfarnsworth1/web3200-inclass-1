@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_25_171600) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_01_173456) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -78,6 +78,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_171600) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "created_by_id", null: false
+    t.integer "updated_by_id", null: false
+    t.index ["created_by_id"], name: "index_courses_on_created_by_id"
+    t.index ["updated_by_id"], name: "index_courses_on_updated_by_id"
   end
 
   create_table "courses_tutors", id: false, force: :cascade do |t|
@@ -125,6 +129,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_171600) do
   add_foreign_key "appointments", "availabilities"
   add_foreign_key "appointments", "students"
   add_foreign_key "availabilities", "tutors"
+  add_foreign_key "courses", "users", column: "created_by_id"
+  add_foreign_key "courses", "users", column: "updated_by_id"
   add_foreign_key "students", "users"
   add_foreign_key "tutors", "users"
 end

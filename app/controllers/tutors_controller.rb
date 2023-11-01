@@ -1,4 +1,5 @@
 class TutorsController < ApplicationController
+  before_action :require_admin
   before_action :set_tutor, only: %i[ show edit update destroy ]
 
   # GET /tutors or /tutors.json
