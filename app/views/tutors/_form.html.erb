@@ -1,9 +1,9 @@
-<%= form_with(model: tutor) do |form| %>
+<%= form_with(model: tutor, class: "m-auto text-center") do |form| %>
   <% if tutor.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(tutor.errors.count, "error") %> prohibited this tutor from being saved:</h2>
 
-      <ul>
+      <ul class="list-group">
         <% tutor.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -11,32 +11,44 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="row mb-2">
+    <div class="col">
+        <%= form.label :name, style: "display: block" %>
+        <%= form.text_field :name, class: "w-25 m-auto text-center form-control rounded-pill border-dark" %>  
+    </div>
   </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+  <div class="row mb-2">
+      <div class="col">
+          <%= form.label :email, style: "display: block" %>
+          <%= form.text_field :email, class: "w-25 m-auto text-center form-control rounded-pill border-dark" %>
+      </div>
   </div>
 
-  <div>
-    <%= form.label :bio, style: "display: block" %>
-    <%= form.text_area :bio %>
+  <div class="row mb-2">
+      <div class="col">
+          <%= form.label :bio, style: "display: block" %>
+          <%= form.text_area :bio, class: "w-25 m-auto text-center form-control rounded border-dark" %> 
+      </div>
   </div>
 
-  <div>
-    <%= form.label :course_ids, style: "display: block" %>
-    <%= form.collection_check_boxes :course_ids,  Course.order(:prefix, :number), :id, :title do |cb| %>
-      <div class="form-check">
-        <%= cb.check_box class: 'form-check-input' %>
-        <%= cb.label class: 'form-check-lable' %>
+  <div class="row mb-3 mt-3">
+      <div class="row">
+          <%= form.label :course_ids, style: "display: block" %>
+      </div>
+          
+          <%= form.collection_check_boxes :course_ids,  Course.order(:prefix, :number), :id, :title do |cb| %>
+      <div class="form-check m-auto">
+      <div class="col">
+        <%= cb.check_box class: 'm-auto' %>
+        <%= cb.label class: 'form-label m-auto' %>
+      </div>
+        
       </div>
     <% end %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

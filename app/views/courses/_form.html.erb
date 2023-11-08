@@ -11,27 +11,27 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :prefix, style: "display: block" %>
-    <%= form.text_field :prefix %>
+  <div class="mb-3">
+    <%= form.label :prefix, style: "display: block", class: "form-label fw-semibold fs-5" %>
+    <%= form.text_field :prefix, class: "form-control border border-secondary-subtle" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :num, style: "display: block", class: "form-label fw-semibold fs-5" %>
+    <%= form.number_field :num, class: "form-control border border-secondary-subtle" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :title, style: "display: block", class: "form-label fw-semibold fs-5" %>
+    <%= form.text_field :title, class: "form-control border border-secondary-subtle" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :description, style: "display: block", class: "form-label fw-semibold fs-5" %>
+    <%= form.text_area :description, class: "form-control border border-secondary-subtle", rows: 5 %>
   </div>
 
   <div>
-    <%= form.label :num, style: "display: block" %>
-    <%= form.number_field :num %>
-  </div>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary fs-4 fw-semibold"%>
   </div>
 <% end %>

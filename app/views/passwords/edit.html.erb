@@ -1,7 +1,7 @@
-<div id="clearance" class="password-reset">
-  <h2><%= t(".title") %></h2>
+<div id="clearance" class="password-reset container mt-5 p-4" style="background-color: #f5f5f5; border: 1px solid #dddddd; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); padding: 20px;">
+  <h2 style="color: black; font-family: 'Arial', sans-serif; font-size: 24px; font-weight: bold;"><%= t(".title") %></h2>
 
-  <p><%= t(".description") %></p>
+  <p style="color: black; font-family: 'Arial', sans-serif; font-size: 16px;"><%= t(".description") %></p>
 
   <%= form_for :password_reset,
         url: [@user, :password, token: @user.confirmation_token],
@@ -16,3 +16,4 @@
     </div>
   <% end %>
 </div>
+
