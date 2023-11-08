@@ -1,16 +1,17 @@
-<div id="clearance" class="password-reset">
-  <h2><%= t(".title") %></h2>
+<div id="clearance" class="password-reset container mt-5 p-4" style="background-color: #f5f5f5; border: 1px solid #dddddd; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); padding: 20px;">
+  <h2 style="color: black; font-family: 'Arial', sans-serif; font-size: 24px; font-weight: bold;"><%= t(".title") %></h2>
 
-  <p><%= t(".description") %></p>
+  <p style="color: black; font-family: 'Arial', sans-serif; font-size: 16px;"><%= t(".description") %></p>
 
   <%= form_for :password, url: passwords_path do |form| %>
     <div class="text-field">
-      <%= form.label :email %>
-      <%= form.email_field :email %>
+      <%= form.label :email, style: "color: black;" %>
+      <%= form.email_field :email, class: "form-control", style: "color: black; width: 60%;" %>
     </div>
 
     <div class="submit-field">
-      <%= form.submit %>
+      <%= form.submit "Submit", class: "btn btn-primary btn-lg btn-block", style: "transform: scale(1); transition: transform 0.2s; background-color: #f8a328; border: 1px solid #f8a328;",
+                  onmouseover: "this.style.transform='scale(1.05)'", onmouseout: "this.style.transform='scale(1)'", onmousedown: "this.style.transform='scale(0.95)'", onmouseup: "this.style.transform='scale(1)'" %>
     </div>
   <% end %>
 </div>
