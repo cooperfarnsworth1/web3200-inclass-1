@@ -30,8 +30,8 @@
             Welcome <%= current_user.email %>
             <%= button_to 'Sign out', sign_out_path, method: :delete, class: "ms-2 nav-link" %>
           <% else %>
-            <%= link_to 'Sing in', sign_in_path, class: "ms-2 nav-link" %>
-            <%= link_to 'Sing up', sign_up_path, class: "ms-2 nav-link" %>
+            <%= link_to 'Sign in', sign_in_path, class: "ms-2 nav-link" %>
+            <%= link_to 'Sign up', sign_up_path, class: "ms-4 me-4 nav-link" %>
           <% end %>
 
           <form class="d-flex" role="search">
