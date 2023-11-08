@@ -26,13 +26,4 @@
 </tbody>
 </table>
 
-<div id="tutors">
-  <% @tutors.each do |tutor| %>
-    <%= render tutor %>
-    <p>
-      <%= link_to "Show this tutor", tutor %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New tutor", new_tutor_path %>
+<%= link_to "New tutor", new_tutor_path, class: 'btn btn-primary mb-3' %>
