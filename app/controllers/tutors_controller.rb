@@ -58,6 +58,13 @@ class TutorsController < ApplicationController
     end
   end
 
+  # GET /tutors/1/availability
+  def availability
+    # Implement the logic to fetch and display tutor's availability
+    @tutor = Tutor.find(params[:id])
+    @availabilities = @tutor.availabilities
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tutor

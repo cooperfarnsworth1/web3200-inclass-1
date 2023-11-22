@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     member do
     get 'availability', to: 'tutors#availability'
     end
-    resources :availilities do  
+    resources :availabilities do  
     resources :appointments, only: [:new, :create, :destroy]
     end
   end
