@@ -14,8 +14,11 @@ Rails.application.routes.draw do
   get "/sign_up" => "clearance/users#new", as: "sign_up"
 
   resources :tutors do
-    resources :availabilities do
-      resources :appointments, only: [:new, :create, :destroy]
+    member do
+    get 'availability', to: 'tutors#availability'
+    end
+    resources :availilities do  
+    resources :appointments, only: [:new, :create, :destroy]
     end
   end
   resources :courses

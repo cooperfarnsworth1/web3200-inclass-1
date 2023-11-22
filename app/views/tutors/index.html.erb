@@ -3,27 +3,48 @@
 <h1>Tutors</h1>
 
 <table class="table">
-<thead>
-  <th>Name</th>
-  <th>Email</th>
-  <th>Bio</th>
-  <th>Courses</th>
-  <th></th>
-</thead>
-<tbody>
-<% @tutors.each do |tutor| %>
-  <tr>
-    <td><%= tutor.name %></td>C
-    <td><%= tutor.email %></td>
-    <td><%= tutor.bio %></td>
-    <td><%= tutor.courses.map {|c| "#{c.prefix}#{c.num}: #{c.title}" }%></td>
-    <td>
-      <%= link_to "Edit", edit_tutor_path(tutor), class: 'btn btn-success' %>
-      <%= link_to "See more", tutor_path(tutor), class: 'btn btn-primary' %>
-    </td>
-  </tr>
-<% end %>
-</tbody>
+  <thead>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Bio</th>
+    <th>Courses</th>
+    <th>Availabilities</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @tutors.each do |tutor| %>
+      <tr>
+        <td><%= tutor.name %></td>
+        <td><%= tutor.email %></td>
+        <td><%= tutor.bio %></td>
+        <td><%= tutor.courses.map { |c| "#{c.prefix}#{c.num}: #{c.title}" } %></td>
+        <td>
+          <table class="table">
+            <thead>
+              <th>Day</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+              <th>Appointments</th>
+            </thead>
+            <tbody>
+              <% tutor.availabilities.each do |availability| %>
+                <tr>
+                  <td><%= availability.day %></td>
+                  <td><%= availability.starts_at.strftime("%I:%M %p") %></td>
+                  <td><%= availability.ends_at.strftime("%I:%M %p") %></td>
+                  <td><%= availability.appointments.count %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </td>
+        <td>
+          <%= link_to "Edit", edit_tutor_path(tutor), class: 'btn btn-success' %>
+          <%= link_to "See more", tutor_path(tutor), class: 'btn btn-primary' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <%= link_to "New tutor", new_tutor_path, class: 'btn btn-primary mb-3' %>
